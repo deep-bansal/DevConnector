@@ -3,6 +3,8 @@ const db = require("./config/mongoose");
 const app = express();
 const port = process.env.PORT || 5000;
 db();
+
+app.use(express.json({ extended: false }));
 app.get("/", (req, res) => {
   res.send("API running");
 });
