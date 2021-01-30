@@ -57,4 +57,24 @@ router.get("/:id", auth, async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 });
+
+router.delete("/:id", auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    if (!post) {
+      return res.status(404).json({ msg: "Post not found" });
+    }
+    if (post.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: "Unauthorized" });
+    }
+    await post.remove();
+    return res.status(200).json({ msg: "Post Removed" });
+  } catch (err) {
+    console.log(err);
+    if (err.kind === "ObjectId") {
+      return res.status(404).json({ msg: "Post not found" });
+    }
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 module.exports = router;
