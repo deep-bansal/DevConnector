@@ -5,6 +5,7 @@ const auth = require("../../../middlewares/auth");
 const User = require("../../../models/User");
 const Post = require("../../../models/Post");
 
+//creating and updating a post
 router.post(
   "/",
   [auth, [check("text", "Text is required").not().isEmpty()]],
@@ -32,6 +33,7 @@ router.post(
   }
 );
 
+//fetch all posts
 router.get("/all", auth, async (req, res) => {
   try {
     const posts = await Post.find();
@@ -42,6 +44,7 @@ router.get("/all", auth, async (req, res) => {
   }
 });
 
+//get post by id
 router.get("/:id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -58,6 +61,7 @@ router.get("/:id", auth, async (req, res) => {
   }
 });
 
+//delete a post
 router.delete("/:id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -78,6 +82,7 @@ router.delete("/:id", auth, async (req, res) => {
   }
 });
 
+//add like to post
 router.put("/like/:id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -96,6 +101,8 @@ router.put("/like/:id", auth, async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 });
+
+//unlike the post
 router.put("/unlike/:id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
