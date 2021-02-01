@@ -12,7 +12,9 @@ import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
 import Dashboard from "./components/dashboard/Dashboard";
 import EditProfile from "./components/profile-forms/EditProfile";
+import AddExperience from "./components/profile-forms/AddExperience";
 import CreateProfile from "./components/profile-forms/CreateProfile";
+import AddEducation from "./components/profile-forms/AddEducation";
 
 //here it checks again and again
 if (localStorage.token) {
@@ -37,6 +39,16 @@ function App(props) {
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/create-profile" component={CreateProfile} />
             <PrivateRoute path="/edit-profile" component={EditProfile} />
+            <PrivateRoute
+              exact
+              path="/add-experience"
+              component={AddExperience}
+            />
+            <PrivateRoute
+              exact
+              path="/add-education"
+              component={AddEducation}
+            />
           </Switch>
         </section>
       </div>

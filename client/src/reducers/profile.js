@@ -2,6 +2,7 @@ import {
   CLEAR_PROFILE,
   GET_PROFILE,
   PROFILE_ERROR,
+  UPDATE_PROFILE,
 } from "../actions/actiontypes";
 
 const initialState = {
@@ -17,6 +18,7 @@ export default function profile(state = initialState, action) {
 
   switch (type) {
     case GET_PROFILE:
+    case UPDATE_PROFILE:
       return {
         ...state,
         profile: payload,
@@ -37,6 +39,7 @@ export default function profile(state = initialState, action) {
         loading: false,
       };
     }
+
     default:
       return state;
   }
