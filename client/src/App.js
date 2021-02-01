@@ -11,6 +11,8 @@ import "./App.css";
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
 import Dashboard from "./components/dashboard/Dashboard";
+import EditProfile from "./components/profile-forms/EditProfile";
+import CreateProfile from "./components/profile-forms/CreateProfile";
 
 //here it checks again and again
 if (localStorage.token) {
@@ -33,6 +35,8 @@ function App(props) {
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
             <PrivateRoute path="/dashboard" component={Dashboard} />
+            <PrivateRoute path="/create-profile" component={CreateProfile} />
+            <PrivateRoute path="/edit-profile" component={EditProfile} />
           </Switch>
         </section>
       </div>
