@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { login } from "../../actions/auth";
 
 const Login = (props) => {
   const [formData, setFormData] = useState({
@@ -13,9 +15,12 @@ const Login = (props) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    console.log("SUCCESS");
+    props.dispatch(login(email, password));
   };
+
+  if (props.auth.isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <Fragment>
@@ -56,4 +61,10 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
+
+export default connect(mapStateToProps)(Login);
