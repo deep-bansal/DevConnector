@@ -95,7 +95,7 @@ function AddEducation({ addEducation, history }) {
               value={current}
               onChange={handleCheckbox}
             />{" "}
-            Current Job
+            Current School
           </p>
         </div>
         <div className="form-group">
