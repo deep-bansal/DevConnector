@@ -15,6 +15,8 @@ import EditProfile from "./components/profile-forms/EditProfile";
 import AddExperience from "./components/profile-forms/AddExperience";
 import CreateProfile from "./components/profile-forms/CreateProfile";
 import AddEducation from "./components/profile-forms/AddEducation";
+import Profiles from "./components/profiles/Profiles";
+import Profile from "./components/profile/Profile";
 
 //here it checks again and again
 if (localStorage.token) {
@@ -25,7 +27,7 @@ function App(props) {
 
   useEffect(() => {
     dispatch(loadUser());
-  }, []);
+  }, [dispatch]);
   return (
     <Router>
       <div className="App">
@@ -36,6 +38,8 @@ function App(props) {
           <Switch>
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
+            <Route path="/profiles" component={Profiles} />
+            <Route path="/profile/:id" component={Profile} />
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/create-profile" component={CreateProfile} />
             <PrivateRoute path="/edit-profile" component={EditProfile} />

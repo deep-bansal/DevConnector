@@ -84,7 +84,6 @@ function AddExperience({ addExperience, history }) {
               type="checkbox"
               name="current"
               checked={current}
-              value=""
               value={current}
               onChange={handleCheckbox}
             />{" "}

@@ -16,7 +16,7 @@ function Dashboard(props) {
   } = props;
   useEffect(() => {
     dispatch(getCurrentProfile());
-  }, []);
+  }, [dispatch]);
 
   return loading && profile === null ? (
     <Fragment>Loading...</Fragment>
@@ -29,8 +29,16 @@ function Dashboard(props) {
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
-          <Experience experience={profile.experience} />
-          <Education education={profile.education} />
+          {profile.experience !== undefined ? (
+            <Experience experience={profile.experience} />
+          ) : (
+            ""
+          )}
+          {profile.education !== undefined ? (
+            <Education education={profile.education} />
+          ) : (
+            ""
+          )}
           <div className="my-2">
             <button
               className="btn btn-danger"
@@ -65,10 +73,9 @@ function Dashboard(props) {
 }
 
 Dashboard.propTypes = {
-  getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
-  deleteAccount: PropTypes.func.isRequired,
+  // deleteAccount: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
