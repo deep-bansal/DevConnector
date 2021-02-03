@@ -17,6 +17,7 @@ import CreateProfile from "./components/profile-forms/CreateProfile";
 import AddEducation from "./components/profile-forms/AddEducation";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
+import Posts from "./components/posts/Posts";
 
 //here it checks again and again
 if (localStorage.token) {
@@ -53,6 +54,7 @@ function App(props) {
               path="/add-education"
               component={AddEducation}
             />
+            <PrivateRoute exact path="/posts" component={Posts} />
           </Switch>
         </section>
       </div>
