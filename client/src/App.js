@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from "./components/layout/Landing";
 import Navbar from "./components/layout/Navbar";
+import NotFound from "./components/layout/NotFound";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Alert from "./components/layout/Alert";
@@ -57,6 +58,7 @@ function App(props) {
             />
             <PrivateRoute exact path="/posts" component={Posts} />
             <PrivateRoute exact path="/post/:id" component={Post} />
+            <Route component={NotFound} />
           </Switch>
         </section>
       </div>
