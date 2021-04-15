@@ -58,7 +58,7 @@ function App(props) {
             />
             <PrivateRoute exact path="/posts" component={Posts} />
             <PrivateRoute exact path="/post/:id" component={Post} />
-            <Route component={NotFound} />
+            <Route exact component={NotFound} />
           </Switch>
         </section>
       </div>
